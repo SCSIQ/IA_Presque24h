@@ -5,7 +5,6 @@ import Case.Case;
 import Case.Type_Case;
 import Case.Vigne;
 import Case.Chemin;
-import Case.Cuve;
 
 public class Fabrique_Cases {
     //singleton
@@ -32,8 +31,6 @@ public class Fabrique_Cases {
             case chemin: nouvelleCase = new Chemin(ligne,colonne,map);
                 break;
             case vigne: nouvelleCase = new Vigne(ligne,colonne,map);
-                break;
-            case cuve: nouvelleCase = new Cuve(ligne,colonne,map);
                 break;
         }
         return nouvelleCase;
