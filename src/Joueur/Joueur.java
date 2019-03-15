@@ -72,36 +72,40 @@ public class Joueur {
      */
     public void ramasser()
     {
-        if(saCase.getObjet().getType()!= Type_Objet.Cuve_Blanc || saCase.getObjet().getType()!= Type_Objet.Cuve_Rouge )
+        if(hotte.estPleine()==false) //vérifie si la hotte est pleine
         {
-            if (hotte.getNombreRaisin() == 0 && pointAction>0) { //Si on a pas encore rammassé de raisin et qu'on a des points d'actions
-                hotte.setTypeRaisin(saCase.getObjet().getType());
-
-                if(saCase.getObjet().getType()== Type_Objet.Blanc)
-                {
-                    hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Blanc)saCase.getObjet()).getQte());
-                }
-                else
-                {
-                    hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Rouge)saCase.getObjet()).getQte());
-                }
-
-                saCase.setObjet(null);
-                this.setPointAction(this.getPointAction()-1);
-            }
-            else if (hotte.getTypeRaisin() == saCase.getObjet().getType() && pointAction>0)
+            if(saCase.getObjet().ramassable()==true) //vérifie si c'est des raisins
             {
-                if(saCase.getObjet().getType()== Type_Objet.Blanc)
-                {
-                    hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Blanc)saCase.getObjet()).getQte());
+                if (hotte.getNombreRaisin() == 0 && pointAction>0) { //Si on a pas encore rammassé de raisin et qu'on a des points d'actions
+                    hotte.setTypeRaisin(saCase.getObjet().getType());
+
+                    if(saCase.getObjet().getType()== Type_Objet.Blanc)
+                    {
+                        hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Blanc)saCase.getObjet()).getQte());
+                    }
+                    else
+                    {
+                        hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Rouge)saCase.getObjet()).getQte());
+                    }
+
+                    saCase.setObjet(null);
+                    this.setPointAction(this.getPointAction()-1);
                 }
-                else
+                else if (hotte.getTypeRaisin() == saCase.getObjet().getType() && pointAction>0)
                 {
-                    hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Rouge)saCase.getObjet()).getQte());
+                    if(saCase.getObjet().getType()== Type_Objet.Blanc)
+                    {
+                        hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Blanc)saCase.getObjet()).getQte());
+                    }
+                    else
+                    {
+                        hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Rouge)saCase.getObjet()).getQte());
+                    }
+                    saCase.setObjet(null);
+                    this.setPointAction(this.getPointAction()-1);
                 }
-                saCase.setObjet(null);
-                this.setPointAction(this.getPointAction()-1);
             }
+
         }
 
 
@@ -112,7 +116,6 @@ public class Joueur {
      */
     public void viderHotte()
     {
-
 
         if(saCase.getObjet().getType()==Type_Objet.Cuve_Blanc && hotte.getTypeRaisin()==Type_Objet.Blanc)
         {

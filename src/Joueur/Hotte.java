@@ -26,7 +26,7 @@ public class Hotte {
     {
         boolean res=false;
 
-        if(nombreRaisin==quantiteMax)
+        if(nombreRaisin>=quantiteMax)
         {
             res =true;
         }
