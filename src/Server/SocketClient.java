@@ -2,6 +2,7 @@ package Server;
 
 import IA.IA_dijkstra;
 import IA.Type_Action;
+import Joueur.Joueur;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -32,6 +33,7 @@ public class SocketClient {
         command = "INSCRIRE";
         pw.println(command);
         str = bufr.readLine();
+        int eq = Integer.parseInt(""+str.charAt(3));
         System.out.println(str);
         boolean tour1 = true;
         do{
@@ -54,10 +56,10 @@ public class SocketClient {
             command = "JOUEURS";
             pw.println(command);
             str = bufr.readLine();
-            c.Joueurs(str);
+            Joueur j = c.Joueurs(str, eq);
             //Demander score
 
-            //IA_dijkstra ia = new IA_dijkstra(new Joueur(new Case()));
+            IA_dijkstra ia = new IA_dijkstra(j);
             for(int i=0; i<=9; i++) {
                 //Actions IA
                 Type_Action action = ia.action();

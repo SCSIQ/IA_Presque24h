@@ -2,6 +2,7 @@ package Server;
 
 import Carte.Map;
 import Carte.Parseur.Parseur;
+import Joueur.Joueur;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,9 +40,10 @@ public class Client {
         p.lectureRaisin(s);
     }
 
-    public void Joueurs(String s) throws IOException{
+    public Joueur Joueurs(String s, int i) throws IOException{
         Parseur p = new Parseur(m);
-      //  p.lectureJoueur(s);
+        return p.addPlayer(s,i);
+
     }
 
 
