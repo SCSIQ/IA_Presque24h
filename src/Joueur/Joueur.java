@@ -57,7 +57,7 @@ public class Joueur {
             }
             else
             {
-               System.out.println("Vous n'avez pas assez de points d'actions");
+               System.out.println("Pour se déplacer : Vous n'avez pas assez de points d'actions");
             }
 
         }
@@ -72,11 +72,11 @@ public class Joueur {
      */
     public void ramasser()
     {
-        if(hotte.estPleine()==false) //vérifie si la hotte est pleine
+        if(hotte.estPleine()==false&& pointAction>0) //vérifie si la hotte est pleine ou si assez de points d'actions
         {
             if(saCase.getObjet().ramassable()==true) //vérifie si c'est des raisins
             {
-                if (hotte.getNombreRaisin() == 0 && pointAction>0) { //Si on a pas encore rammassé de raisin et qu'on a des points d'actions
+                if (hotte.getNombreRaisin() == 0 ) { //Si on a pas encore rammassé de raisin et qu'on a des points d'actions
                     hotte.setTypeRaisin(saCase.getObjet().getType());
 
                     if(saCase.getObjet().getType()== Type_Objet.Blanc)
@@ -91,7 +91,7 @@ public class Joueur {
                     saCase.setObjet(null);
                     this.setPointAction(this.getPointAction()-1);
                 }
-                else if (hotte.getTypeRaisin() == saCase.getObjet().getType() && pointAction>0)
+                else if (hotte.getTypeRaisin() == saCase.getObjet().getType())
                 {
                     if(saCase.getObjet().getType()== Type_Objet.Blanc)
                     {
@@ -106,6 +106,10 @@ public class Joueur {
                 }
             }
 
+        }
+        else
+        {
+            System.out.println("Pour rammasser : Vous n'avez pas assez de points d'actions ou votre hotte est pleine");
         }
 
 
@@ -146,7 +150,7 @@ public class Joueur {
         }
         else
         {
-            System.out.println("Vous n'avez pas assez de points d'actions");
+            System.out.println("Pour vider la hotte : Vous n'avez pas assez de points d'actions");
         }
 
     }
