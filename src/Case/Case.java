@@ -2,6 +2,8 @@ package Case;
 
 import Carte.Map;
 
+import static Case.Type_Case.vigne;
+
 public abstract class Case {
 
 
@@ -87,4 +89,30 @@ public abstract class Case {
         this.raisin = raisin;
     }
     * */
+
+    //METHODES
+
+    public abstract Type_Case getType();
+
+    /**
+     *
+     * @return true si personne dans case( si un joueur ou si case=vigne _>  false)
+     */
+    public boolean franchissable()
+    {
+        boolean rep=true;
+
+       /* if(this.joueur !=null)
+        {
+            rep=false;
+        }*/
+        
+        if(this.getType()==vigne)
+        {
+            rep=false;
+        }
+
+        return rep;
+    }
+
 }
