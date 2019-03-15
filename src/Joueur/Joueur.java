@@ -28,12 +28,22 @@ public class Joueur {
 
     /**
      *
-     * @return true si raisin (false si != raisin et si type raisin != type raisin dans hotte
+     * raisin et si type raisin != type raisin dans hotte -> ne ramasse pas
      */
-    public boolean ramasser()
+    public void ramasser()
     {
 
-        return false;
+        if (hotte.getNombreRaisin() == 0 && pointAction>0) {
+            hotte.setTypeRaisin(saCase.getRaisin().getType());
+            hotte.setNombreRaisin(saCase.getRaisin().getQte());
+            this.setPointAction(this.getPointAction()-1);
+        }
+        else if (hotte.getTypeRaisin() == saCase.getRaisin().getType() && pointAction>0)
+        {
+            hotte.setNombreRaisin(saCase.getRaisin().getQte());
+            this.setPointAction(this.getPointAction()-1);
+        }
+
     }
 
     public void viderHotte()
