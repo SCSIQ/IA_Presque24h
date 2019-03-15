@@ -17,5 +17,4 @@ public class SocketClient {
         pw.println("INSCRIRE");
         socket.close();
     }
-
 }
