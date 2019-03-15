@@ -12,21 +12,37 @@ import java.net.Socket;
 public class Client {
 
     private Socket s;
+    private Map m;
 
     public Client(Socket s){
         this.s = s;
+        m = new Map();
     }
 
-    public void Carte() throws IOException {
+    public void Carte(String map) throws IOException {
 
-        InputStream is = s.getInputStream();
+        /*InputStream is = s.getInputStream();
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader bufr = new BufferedReader( isr );
-        String str = bufr.readLine();
-        Map m = new Map();
+        String str = bufr.readLine();*/
         Parseur p = new Parseur(m);
-        p.lectureCase(str);
-        System.out.println(str);
+        p.lectureCase(map);
     }
+
+    public void Cuves(String c) throws IOException{
+        Parseur p = new Parseur(m);
+        p.lectureCuve(c);
+    }
+
+    public void Raisin(String s) throws IOException{
+        Parseur p = new Parseur(m);
+        p.lectureRaisin(s);
+    }
+
+    public void Joueurs(String s) throws IOException{
+        Parseur p = new Parseur(m);
+      //  p.lectureJoueur(s);
+    }
+
 
 }
