@@ -1,6 +1,6 @@
 package Joueur;
 
-import Carte.Objet.Type_Objet;
+import Objet.Type_Objet;
 
 public class Hotte {
 
@@ -26,7 +26,7 @@ public class Hotte {
     {
         boolean res=false;
 
-        if(nombreRaisin==quantiteMax)
+        if(nombreRaisin>=quantiteMax)
         {
             res =true;
         }

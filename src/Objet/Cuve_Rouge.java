@@ -1,4 +1,4 @@
-package Carte.Objet;
+package Objet;
 
 public class Cuve_Rouge extends Objet {
 
