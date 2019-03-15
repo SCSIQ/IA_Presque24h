@@ -32,6 +32,11 @@ public class Map {
 
 //---------- GETEUR/SETEUR -----------------------------------------------------
 
+
+    public ArrayList<Objet> getListeObjet() {
+        return listeObjet;
+    }
+
     //Renvoie la case présente à ses coordonnées
     public Case getCase(int ligne, int colonne) {
         return this.hashMapCases.get(new Coordonnees(ligne,colonne));
