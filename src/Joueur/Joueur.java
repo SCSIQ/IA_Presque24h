@@ -24,28 +24,39 @@ public class Joueur {
     public Type_Action deplacerJoueur(Case caseSuivante)
     {
         Type_Action deplacement=Type_Action.attendre;
+
         if(caseSuivante.franchissable())//vérifie si franchissable
         {
-            if(caseSuivante==this.saCase.getDroite())
+            if(pointAction>0)
             {
-                this.saCase=caseSuivante;
-                deplacement=Type_Action.deplacement_droite;
+                if(caseSuivante==this.saCase.getDroite())
+                {
+                    this.saCase=caseSuivante;
+                    deplacement=Type_Action.deplacement_droite;
+                }
+                else if(caseSuivante==this.saCase.getBas())
+                {
+                    this.saCase=caseSuivante;
+                    deplacement=Type_Action.deplacement_bas;
+                }
+                else if(caseSuivante==this.saCase.getGauche())
+                {
+                    this.saCase=caseSuivante;
+                    deplacement=Type_Action.deplacement_gauche;
+                }
+                else if(caseSuivante==this.saCase.getHaut())
+                {
+                    this.saCase=caseSuivante;
+                    deplacement=Type_Action.deplacement_haut;
+                }
+
+                this.setPointAction(this.getPointAction()-1);
             }
-            else if(caseSuivante==this.saCase.getBas())
+            else
             {
-                this.saCase=caseSuivante;
-                deplacement=Type_Action.deplacement_bas;
+               System.out.println("Vous n'avez pas assez de points d'actions");
             }
-            else if(caseSuivante==this.saCase.getGauche())
-            {
-                this.saCase=caseSuivante;
-                deplacement=Type_Action.deplacement_gauche;
-            }
-            else if(caseSuivante==this.saCase.getHaut())
-            {
-                this.saCase=caseSuivante;
-                deplacement=Type_Action.deplacement_haut;
-            }
+
         }
 
         return deplacement;
