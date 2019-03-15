@@ -89,6 +89,7 @@ public class Joueur {
                     }
 
                     saCase.setObjet(null);
+                    saCase.getMap().getListeObjet().remove(saCase.getObjet());
                     this.setPointAction(this.getPointAction()-1);
                 }
                 else if (hotte.getTypeRaisin() == saCase.getObjet().getType())
@@ -101,7 +102,9 @@ public class Joueur {
                     {
                         hotte.setNombreRaisin(hotte.getNombreRaisin()+((Raisin_Rouge)saCase.getObjet()).getQte());
                     }
+
                     saCase.setObjet(null);
+                    saCase.getMap().getListeObjet().remove(saCase.getObjet());
                     this.setPointAction(this.getPointAction()-1);
                 }
             }
