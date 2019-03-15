@@ -82,7 +82,7 @@ public class Map {
 
 
 
-    private void genererGrapheSimple(){
+    public void genererGrapheSimple(){
         //Génération des sommets
         for (Case c : this.listeCase){
             this.graphe_simple.addNoeud(c);
@@ -93,17 +93,17 @@ public class Map {
                 if ((Math.abs(c1.getLigne()-c2.getLigne())+Math.abs(c1.getColonne()-c2.getColonne()))==1){
                     switch (c2.getType())
                     {
-                        /*case Sol:
+                        case chemin:
                             this.graphe_simple.addEdge(c1, c2);
                             this.graphe_simple.setLabel(c1,c2,1);
                             break;
-                        case Mur:
+                        /*case vigne:
                             this.graphe_simple.addEdge(c1, c2);
-                            this.graphe_simple.setLabel(c1,c2,2);
-                            break;
+                            this.graphe_simple.setLabel(c1,c2,100);
+                            break;*/
                         default :
                             //System.out.println("Bruh");
-                            break;*/
+                            break;
                     }
                 }
             }
