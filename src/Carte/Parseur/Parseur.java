@@ -112,6 +112,7 @@ public class Parseur {
         for(Case c : this.map.getListeCase()){
             c.setJoueur(null);
         }
+        numEquipe += 1;
         String bonneChaine = this.removePipe(chaine);
         String[] listeEquipe = bonneChaine.split("_");
         String[] coordEquipe = listeEquipe[numEquipe].split(";");
