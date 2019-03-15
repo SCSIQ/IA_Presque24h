@@ -125,13 +125,13 @@ public class Joueur {
         {
             if(saCase.getObjet().getType()==Type_Objet.Cuve_Blanc && hotte.getTypeRaisin()==Type_Objet.Blanc)
             {
-                score+=15*((Raisin_Blanc)saCase.getObjet()).getQte();
+                score+=((Raisin_Blanc)saCase.getObjet()).getValeurRaisin()*((Raisin_Blanc)saCase.getObjet()).getQte();
                 ((Raisin_Blanc)saCase.getObjet()).setQte(0);
 
             }
             else if(saCase.getObjet().getType()==Type_Objet.Cuve_Rouge && hotte.getTypeRaisin()==Type_Objet.Rouge)
             {
-                score+=20*((Raisin_Blanc)saCase.getObjet()).getQte();
+                score+=((Raisin_Rouge)saCase.getObjet()).getValeurRaisin()*((Raisin_Blanc)saCase.getObjet()).getQte();
                 ((Raisin_Rouge)saCase.getObjet()).setQte(0);
             }
             else

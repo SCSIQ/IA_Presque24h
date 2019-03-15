@@ -4,6 +4,7 @@ import Case.Case;
 
 public class Raisin_Rouge extends Objet {
 
+    private int valeurRaisin=20;
     private int qte;
 
     public Raisin_Rouge(Case c, int qte){
@@ -27,5 +28,8 @@ public class Raisin_Rouge extends Objet {
     }
     public void setQte(int qte) {
         this.qte = qte;
+    }
+    public int getValeurRaisin() {
+        return valeurRaisin;
     }
 }
