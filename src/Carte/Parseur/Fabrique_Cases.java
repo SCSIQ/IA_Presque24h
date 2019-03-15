@@ -24,7 +24,7 @@ public class Fabrique_Cases {
     public static Case construireCase(Type_Case type, int ligne, int colonne, Map map) {
         Case nouvelleCase = null;
         switch(type) {
-            
+
         }
         return nouvelleCase;
     }

@@ -1,11 +1,13 @@
 package Carte.Graphes;
 
 
+import Case.Case;
+
 import java.util.HashMap;
 
 public class Graphe {
     private HashMap<Case,Noeud> Noeuds;
-    private HashMap<CoupleNoeud,Integer> Labels;
+    private HashMap<Couple_Noeud,Integer> Labels;
 
     public Graphe(){
         this.Noeuds=new HashMap();
@@ -24,13 +26,13 @@ public class Graphe {
         return this.Noeuds.get(c);
     }
     public Integer getLabel(Case c1,Case c2){
-        return Labels.get(new CoupleNoeud(Noeuds.get(c1),Noeuds.get(c2)));
+        return Labels.get(new Couple_Noeud(Noeuds.get(c1),Noeuds.get(c2)));
     }
     public void setLabel(Case c1,Case c2,int nb){
-        this.Labels.put(new CoupleNoeud(Noeuds.get(c1),Noeuds.get(c2)), nb);
+        this.Labels.put(new Couple_Noeud(Noeuds.get(c1),Noeuds.get(c2)), nb);
     }
 
-    public HashMap<CoupleNoeud, Integer> getLabels() {
+    public HashMap<Couple_Noeud, Integer> getLabels() {
         return Labels;
     }
     public void afficheMatriceAdjacence(){
@@ -58,7 +60,7 @@ public class Graphe {
         this.Noeuds.put(nouvelleCase, n);
         for (Noeud v : this.getNoeuds().values()) {
             if (v.getVoisins().contains(this.getNoeud(nouvelleCase))) {
-                CoupleNoeud vC = new CoupleNoeud(v, this.getNoeud(nouvelleCase));
+                Couple_Noeud vC = new Couple_Noeud(v, this.getNoeud(nouvelleCase));
                 this.getLabels().replace(vC, 2, 1);
             }
         }

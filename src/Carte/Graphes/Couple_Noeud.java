@@ -30,7 +30,7 @@ public class Couple_Noeud {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CoupleNoeud other = (CoupleNoeud) obj;
+        final Couple_Noeud other = (Couple_Noeud) obj;
         if (!Objects.equals(this.start, other.start)) {
             return false;
         }
