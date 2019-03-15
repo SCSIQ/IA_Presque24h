@@ -140,7 +140,7 @@ public abstract class Case {
 
     public String toString()
     {
-        return getLigne()+"/"+getColonne();
+        return getLigne()+"/"+getColonne()+" type : " + getType();
     }
 
 }

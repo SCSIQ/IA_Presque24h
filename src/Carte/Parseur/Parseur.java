@@ -1,9 +1,10 @@
 package Carte.Parseur;
 import Carte.Map;
-import Carte.Objet.Cuve_Blanc;
-import Carte.Objet.Cuve_Rouge;
 import Case.Case;
 import Case.Type_Case;
+import Objet.Cuve_Blanc;
+import Objet.Cuve_Rouge;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -21,7 +22,8 @@ public class Parseur {
 
     //Parse une ligne du fichier
     public void parseLigne(int numLigne, String ligne, int tailleLigne) {
-        for(int numColonne = 0 ; numColonne < tailleLigne ; numColonne++) {
+
+        for(int numColonne =0 ; numColonne < tailleLigne; numColonne++) {
             char c = ligne.charAt(numColonne);
             //creation de la case
             Case nouvelleCase = null;
@@ -29,8 +31,8 @@ public class Parseur {
              case 'C' : nouvelleCase = Fabrique_Cases.construireCase(Type_Case.chemin, numLigne, numColonne,this.map); break;
              default : nouvelleCase = Fabrique_Cases.construireCase(Type_Case.vigne, numLigne, numColonne,this.map); break;
              }
-            //System.out.println(nouvelleCase);
-             this.map.setCase(numLigne, numColonne, nouvelleCase);
+            this.map.setCase(numLigne, numColonne, nouvelleCase);
+
         }
     }
 
@@ -42,10 +44,25 @@ public class Parseur {
         String d = this.removePipe(ligne);
         String[] chaine = d.split("_");
         int nbColonnes = Integer.parseInt(chaine[1]);
-        for (int numLigne = 0; numLigne < nbColonnes; numLigne++){
-            this.parseLigne(numLigne, chaine[2], nbColonnes);
-        }
+        String[] dd = new String[nbColonnes];
+        int nb = 0;
+        int pos = 0;
+        String ca = "";
 
+        for (char c : chaine[2].toCharArray()             ) {
+            ca += c;
+            nb++;
+            if (nb == nbColonnes){
+                dd[pos] = ca;
+                nb = 0;
+                pos++;
+                ca = "";
+            }
+        }
+        for (int numLigne = 0; numLigne < nbColonnes; numLigne++){
+            this.parseLigne(numLigne, dd[numLigne], nbColonnes);
+        }
+        System.out.println(map);
         this.map.genererGrapheSimple();
 
     }
