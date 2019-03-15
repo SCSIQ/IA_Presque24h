@@ -97,10 +97,10 @@ public class Map {
                             this.graphe_simple.addEdge(c1, c2);
                             this.graphe_simple.setLabel(c1,c2,1);
                             break;
-                        case vigne:
+                        /*case vigne:
                             this.graphe_simple.addEdge(c1, c2);
                             this.graphe_simple.setLabel(c1,c2,100);
-                            break;
+                            break;*/
                         default :
                             //System.out.println("Bruh");
                             break;
