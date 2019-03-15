@@ -171,4 +171,5 @@ public class Joueur {
         return saCase;
     }
 
+    public Hotte getHotte() {return this.hotte; }
 }
