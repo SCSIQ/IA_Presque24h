@@ -13,4 +13,6 @@ public class Hotte {
         nombreRaisin=0;
         quantiteMax=100;
     }
+
+
 }
