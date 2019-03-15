@@ -139,6 +139,8 @@ public class Joueur {
                 ((Raisin_Rouge)saCase.getObjet()).setQte(0);
             }
         }
+
+        this.setPointAction(this.getPointAction()-1);
     }
 
     //GETTER SETTER
