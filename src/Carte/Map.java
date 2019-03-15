@@ -1,5 +1,7 @@
 package Carte;
 
+import Case.Case;
+
 public class Map {
 
 
@@ -66,7 +68,7 @@ public class Map {
 //---------- GETEUR/SETEUR -----------------------------------------------------
 
     //Renvoie la case présente à ses coordonnées
-    public Case getCase(int ligne,int colonne) {
+    public Case getCase(int ligne, int colonne) {
         return this.hashMapCases.get(new Coordonnees(ligne,colonne));
     }
 
