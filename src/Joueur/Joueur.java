@@ -117,30 +117,34 @@ public class Joueur {
     public void viderHotte()
     {
 
-        if(saCase.getObjet().getType()==Type_Objet.Cuve_Blanc && hotte.getTypeRaisin()==Type_Objet.Blanc)
+        if(this.getPointAction()>0)
         {
-            score+=15*((Raisin_Blanc)saCase.getObjet()).getQte();
-           ((Raisin_Blanc)saCase.getObjet()).setQte(0);
-
-        }
-        else if(saCase.getObjet().getType()==Type_Objet.Cuve_Rouge && hotte.getTypeRaisin()==Type_Objet.Rouge)
-        {
-            score+=20*((Raisin_Blanc)saCase.getObjet()).getQte();
-            ((Raisin_Rouge)saCase.getObjet()).setQte(0);
-        }
-        else
-        {
-            if(hotte.getTypeRaisin()==Type_Objet.Blanc)
+            if(saCase.getObjet().getType()==Type_Objet.Cuve_Blanc && hotte.getTypeRaisin()==Type_Objet.Blanc)
             {
+                score+=15*((Raisin_Blanc)saCase.getObjet()).getQte();
                 ((Raisin_Blanc)saCase.getObjet()).setQte(0);
+
+            }
+            else if(saCase.getObjet().getType()==Type_Objet.Cuve_Rouge && hotte.getTypeRaisin()==Type_Objet.Rouge)
+            {
+                score+=20*((Raisin_Blanc)saCase.getObjet()).getQte();
+                ((Raisin_Rouge)saCase.getObjet()).setQte(0);
             }
             else
             {
-                ((Raisin_Rouge)saCase.getObjet()).setQte(0);
+                if(hotte.getTypeRaisin()==Type_Objet.Blanc)
+                {
+                    ((Raisin_Blanc)saCase.getObjet()).setQte(0);
+                }
+                else
+                {
+                    ((Raisin_Rouge)saCase.getObjet()).setQte(0);
+                }
             }
+
+            this.setPointAction(this.getPointAction()-1);
         }
 
-        this.setPointAction(this.getPointAction()-1);
     }
 
     //GETTER SETTER
