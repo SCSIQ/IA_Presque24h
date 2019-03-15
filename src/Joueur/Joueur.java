@@ -144,6 +144,10 @@ public class Joueur {
 
             this.setPointAction(this.getPointAction()-1);
         }
+        else
+        {
+            System.out.println("Vous n'avez pas assez de points d'actions");
+        }
 
     }
 
