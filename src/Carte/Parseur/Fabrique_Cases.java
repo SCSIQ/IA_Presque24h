@@ -1,6 +1,11 @@
 package Carte.Parseur;
 
+import Carte.Map;
 import Case.Case;
+import Case.Type_Case;
+import Case.Vigne;
+import Case.Chemin;
+import Case.Cuve;
 
 public class Fabrique_Cases {
     //singleton
@@ -24,7 +29,12 @@ public class Fabrique_Cases {
     public static Case construireCase(Type_Case type, int ligne, int colonne, Map map) {
         Case nouvelleCase = null;
         switch(type) {
-
+            case chemin: nouvelleCase = new Chemin(ligne,colonne,map);
+                break;
+            case vigne: nouvelleCase = new Vigne(ligne,colonne,map);
+                break;
+            case cuve: nouvelleCase = new Cuve(ligne,colonne,map);
+                break;
         }
         return nouvelleCase;
     }
