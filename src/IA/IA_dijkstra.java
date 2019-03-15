@@ -33,7 +33,7 @@ public class IA_dijkstra extends IA{
 
         this.map=this.getEntite().getSaCase().getMap();
         this.graphe=this.map.getGrapheSimple();
-        if(astar!=null){
+        if(astar==null){
             astar = new Astar(graphe);
         }
         if(astar.getPath().isEmpty()){
@@ -92,7 +92,7 @@ public class IA_dijkstra extends IA{
         if(CaseSuivante.getType()==Type_Case.chemin){
             //Si la case est vide
             if(CaseSuivante.getJoueur()==null) {
-                res = this.directionDeplacement(this.getCase().getLigne(), this.getCase().getColonne(), CaseSuivante);
+                res = this.directionDeplacement(this.getCase().getColonne(), this.getCase().getLigne(), CaseSuivante);
             }
         }
         return res;

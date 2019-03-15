@@ -9,6 +9,7 @@ public class Raisin_Blanc extends Objet {
 
     public Raisin_Blanc(Case c, int qte){
         super();
+        this.setCase(c);
         this.qte=qte;
         this.getCase().setObjet(this);
     }
