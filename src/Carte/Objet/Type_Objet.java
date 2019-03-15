@@ -1,5 +1,5 @@
 package Carte.Objet;
 
 public enum Type_Objet {
-    Rouge, Blanc, Cuve;
+    Rouge, Blanc, Cuve_Rouge, Cuve_Blanc;
 }

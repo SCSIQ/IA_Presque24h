@@ -21,4 +21,11 @@ public class Raisin_Rouge extends Objet {
     public Type_Objet getType() {
         return Type_Objet.Rouge;
     }
+
+    public int getQte() {
+        return qte;
+    }
+    public void setQte(int qte) {
+        this.qte = qte;
+    }
 }
