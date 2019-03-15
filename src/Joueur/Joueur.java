@@ -11,10 +11,11 @@ public class Joueur {
     private int pointAction; //non cumulable
 
     //CONSTRUCTEUR
-    public Joueur(Case case)
+    public Joueur(Case saCase)
     {
         pointAction=10;
         hotte = new Hotte();
+        this.saCase=saCase;
 
     }
 
@@ -48,6 +49,10 @@ public class Joueur {
 
     public void setPointAction(int pointAction) {
         this.pointAction = pointAction;
+    }
+
+    public Case getSaCase() {
+        return saCase;
     }
 
 }
