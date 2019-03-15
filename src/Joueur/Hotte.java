@@ -1,6 +1,6 @@
 package Joueur;
 
-import Carte.Objet.Type_Objet;
+import Objet.Type_Objet;
 
 public class Hotte {
 

@@ -1,7 +1,7 @@
 package Carte;
 
 import Carte.Graphes.Graphe;
-import Carte.Objet.Objet;
+import Objet.Objet;
 import Joueur.Joueur;
 import Carte.Parseur.Fabrique_Cases;
 import Case.Case;

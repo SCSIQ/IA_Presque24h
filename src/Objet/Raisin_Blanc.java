@@ -1,4 +1,4 @@
-package Carte.Objet;
+package Objet;
 
 import Case.Case;
 

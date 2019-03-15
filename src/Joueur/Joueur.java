@@ -1,8 +1,8 @@
 package Joueur;
 
-import Carte.Objet.Raisin_Blanc;
-import Carte.Objet.Raisin_Rouge;
-import Carte.Objet.Type_Objet;
+import Objet.Raisin_Blanc;
+import Objet.Raisin_Rouge;
+import Objet.Type_Objet;
 import Case.Case;
 import IA.Type_Action;
 

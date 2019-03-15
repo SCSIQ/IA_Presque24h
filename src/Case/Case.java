@@ -1,6 +1,6 @@
 package Case;
 
-import Carte.Objet.Objet;
+import Objet.Objet;
 import Joueur.Joueur;
 import Carte.Map;
 
