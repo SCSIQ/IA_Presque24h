@@ -1,6 +1,8 @@
 package Carte;
 
 import Carte.Graphes.Graphe;
+import Joueur.Joueur;
+import Carte.Objet.Raisin;
 import Carte.Parseur.Fabrique_Cases;
 import Carte.Parseur.Parseur;
 import Case.Case;
@@ -14,15 +16,10 @@ public class Map {
 
 
     private final HashMap<Coordonnees,Case> hashMapCases;                       //Stockage par coordonnées des cases
-    private final ArrayList<Entite> listeEntite;                                //Liste des entités
     private final ArrayList<Case> listeCase;                                    //Liste des cases
-    private final ArrayList<Objet> listeObjet;                                  //Liste des objets
-    private Coordonnees depart;                                                 //Position du point de départ
-    private Coordonnees fin;                                                    //Position de la sortie
-
-    private Entite_Cadence joueur;        //Cadence
+    private final ArrayList<Raisin> listeObjet;                                  //Liste des objets     //Position de la sortie
+    private Joueur joueur;        //Cadence
     private Graphe graphe_simple;
-    private Graphe graphe_complexe;
 
 //---------- CONSTRUCTEURS -----------------------------------------------------
 
@@ -30,48 +27,10 @@ public class Map {
         //Initialisation
         this.hashMapCases = new HashMap<>();
         this.listeCase = new ArrayList<>();
-        this.listeEntite = new ArrayList<>();
         this.listeObjet = new ArrayList<>();
         this.joueur = null;
         this.graphe_simple=new Graphe();
-        this.graphe_complexe=new Graphe();
     }
-
-    //créer la map à partir d'un fichier texte
-    public void chargerFichier(String adresseFichier) throws IOException {
-        Parseur parseur = new Parseur(adresseFichier,this);
-        parseur.lecture();
-    /*
-    System.out.println("Niveau chargé.");
-    System.out.println("Le nombre de case est "+this.listeCase.size());
-    System.out.println("Le nombre d'objet est "+this.listeObjet.size());
-    System.out.println("Le nombre d'entités est "+this.listeEntite.size());
-    int i=0;
-    System.out.println("Liste des objets :");
-    for (Objet o : listeObjet){
-        System.out.println("\n"+o.getType());
-        if (o.getType()==Type_Objet.Diamant){
-            i++;
-        }
-    }
-    System.out.println("Le nombre de diamant sur la map est :"+i);
-    System.out.println("La case de fin est à la ligne : "+fin.getLigne()+"\n\tcolonne : "+fin.getColonne());
-    int j=0;
-    System.out.println("Liste des entites :");
-    for (Entite e : listeEntite){
-        System.out.println("\n"+e.getType());
-    }
-    System.out.println("Cadence est sur la case "+this.joueur.getCase().getLigne()+" "+this.joueur.getCase().getColonne());
-    System.out.println("La case à gauche de Cadence est une case "+this.getCase(this.joueur.getCase().getLigne(),this.joueur.getCase().getColonne()-1).getType());
-    //Il est possible de rajouter ICI des choses se réalisant juste après le chargement de la carte...
-    */
-        this.genererGrapheSimple();
-        //this.graphe_simple.afficheMatriceAdjacence();
-        this.genererGrapheComplexe();
-        //this.graphe_complexe.afficheMatriceAdjacence();
-
-    }
-//------------------------------------------------------------------------------
 
 //---------- GETEUR/SETEUR -----------------------------------------------------
 
@@ -95,31 +54,11 @@ public class Map {
         if (this.graphe_simple!=null){
             this.graphe_simple.replaceCase(caseInitiale, nouvelleCase);
         }
-        if (this.graphe_complexe!=null){
-            this.graphe_complexe.replaceCase(caseInitiale, nouvelleCase);
-        }
-    }
-
-
-    //Ajoute une entité à la position donnée
-    public void ajouteEntite(int ligne,int colonne, Entite entite) {
-        this.getCase(ligne, colonne).setEntite(entite);
-        entite.setCase(this.getCase(ligne, colonne));
-        if(entite.getType() != Type_Entite.Cadence) {
-            this.listeEntite.add(entite);
-        }
     }
 
     //Fixe le joueur
-    public void setJoueur(Entite_Cadence cadence) {
-        this.joueur = cadence;
-    }
-
-    //Ajoute un objet à la position donnée
-    public void ajouteObjet(int ligne,int colonne, Objet objet) {
-        this.getCase(ligne, colonne).setObjet(objet);
-        objet.setCase(this.getCase(ligne, colonne));
-        this.listeObjet.add(objet);
+    public void setJoueur(Joueur _joueur) {
+        this.joueur = _joueur;
     }
 
     //Renvoie la hashmap des cases
@@ -127,52 +66,17 @@ public class Map {
         return this.hashMapCases;
     }
 
-    //Fixe le point de départ
-    public void setDepart(int numLigne,int numColonne) {
-        this.depart = new Coordonnees(numLigne,numColonne);
-    }
-
-    //Fixe la position de la sortie
-    public void setSortie(int numLigne,int numColonne) {
-        this.fin = new Coordonnees(numLigne,numColonne);
-    }
-
-    //Renvoie la position du point de départ
-    public Coordonnees getDepart() {
-        return this.depart;
-    }
-
-    //Renvoie la position du point de sortie
-    public Coordonnees getSortie() {
-        return this.fin;
-    }
-
-    //Renvoie la liste des entités
-    public ArrayList<Entite> getListeEntite() {
-        return this.listeEntite;
-    }
-
     //Renvoie la liste des cases
     public ArrayList<Case> getListeCase() {
         return this.listeCase;
     }
 
-    //Renvoie la liste des objets
-    public ArrayList<Objet> getListeObjet() {
-        return this.listeObjet;
-    }
 
-    //Renvoie le joueur
-    public Entite_Cadence getJoueur() {
-        return this.joueur;
-    }
+    //Renvoie le graphe simple
     public Graphe getGrapheSimple(){
         return this.graphe_simple;
     }
 
-    public Graphe getGraphe_complexe() {
-        return graphe_complexe;
-    }
 
 
     private void genererGrapheSimple(){
@@ -186,7 +90,7 @@ public class Map {
                 if ((Math.abs(c1.getLigne()-c2.getLigne())+Math.abs(c1.getColonne()-c2.getColonne()))==1){
                     switch (c2.getType())
                     {
-                        case Sol:
+                        /*case Sol:
                             this.graphe_simple.addEdge(c1, c2);
                             this.graphe_simple.setLabel(c1,c2,1);
                             break;
@@ -196,51 +100,13 @@ public class Map {
                             break;
                         default :
                             //System.out.println("Bruh");
-                            break;
+                            break;*/
                     }
                 }
             }
         }
 
     }
-    private void genererGrapheComplexe(){
-        //Génération des sommets
-        for (Case c : this.listeCase){
-            this.graphe_complexe.addNoeud(c);
-        }
-        //Génération des edges
-        for (Case c1 : this.listeCase){
-            for (Case c2 : this.listeCase){
-                if ((Math.abs(c1.getLigne()-c2.getLigne())+Math.abs(c1.getColonne()-c2.getColonne()))==1){
-                    switch (c2.getType())
-                    {
-                        case Sol:
-                            this.graphe_complexe.addEdge(c1, c2);
-                            this.graphe_complexe.setLabel(c1,c2,1);
-                            break;
-                        case Mur:
-                            this.graphe_complexe.addEdge(c1, c2);
-                            this.graphe_complexe.setLabel(c1,c2,2);
-                            break;
-                        case MurDur:
-                            this.graphe_complexe.addEdge(c1, c2);
-                            this.graphe_complexe.setLabel(c1,c2,2);
-                            break;
-                        default :
-                            //System.out.println("Bruh");
-                            break;
-                    }
-                }
-            }
-        }
-
-    }
-
-    public Case caseSortie(){
-        return this.getCase(this.fin.getLigne(), this.fin.getColonne());
-    }
-
-//------------------------------------------------------------------------------
 
 }
 
