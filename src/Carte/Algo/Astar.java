@@ -1,5 +1,12 @@
 package Carte.Algo;
 
+import Carte.Graphes.Couple_Noeud;
+import Carte.Graphes.Graphe;
+import Carte.Graphes.Noeud;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Astar {
     private Graphe graph;
     private Noeud debut;
@@ -66,9 +73,9 @@ public class Astar {
 
     public void relaxing(Noeud a, Noeud b){
         //System.out.println(this.graph.getLabels().get(new NoeudCouple(a,b)));
-        if(this.graph.getLabels().get(new CoupleNoeud(a,b)) != null) {
-            if (distance.get(b)> (distance.get(a)+ this.graph.getLabels().get(new CoupleNoeud(a,b)))){
-                distance.put(b, (distance.get(a)+ this.graph.getLabels().get(new CoupleNoeud(a,b))));
+        if(this.graph.getLabels().get(new Couple_Noeud(a,b)) != null) {
+            if (distance.get(b)> (distance.get(a)+ this.graph.getLabels().get(new Couple_Noeud(a,b)))){
+                distance.put(b, (distance.get(a)+ this.graph.getLabels().get(new Couple_Noeud(a,b))));
                 predecessor.put(b, a);
             }
         }

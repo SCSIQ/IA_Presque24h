@@ -1,6 +1,8 @@
 package Carte.Graphes;
 
 
+import Case.Case;
+
 import java.util.ArrayList;
 
 public class Noeud {
