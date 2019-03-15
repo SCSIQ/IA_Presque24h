@@ -1,6 +1,6 @@
 package Case;
 
-import Carte.Joueur.Joueur;
+import Joueur.Joueur;
 import Carte.Map;
 import Carte.Objet.Raisin;
 
@@ -16,6 +16,7 @@ public abstract class Case {
     private Joueur joueur=null;
     private Raisin raisin;
     private Map map;
+
 
     //CONSTRUCTEUR
     public Case(int ligne, int colonne, Map map)
@@ -74,6 +75,11 @@ public abstract class Case {
         this.map = map;
     }
 
+    public void setMap(Raisin raisin) {
+        this.raisin = raisin;
+    }
+
+    public void setJoueur(Joueur joueur) {this.joueur = joueur; }
 
     public Joueur getJoueur() {
         return joueur;
@@ -86,10 +92,12 @@ public abstract class Case {
     public Raisin getRaisin() {
         return raisin;
     }
-
-    public void setMap(Raisin raisin) {
+    public void setRaisin(Raisin raisin) {
         this.raisin = raisin;
     }
+
+
+
 
 
     //METHODES

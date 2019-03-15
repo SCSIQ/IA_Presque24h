@@ -1,4 +1,4 @@
-package Carte.Joueur;
+package Joueur;
 
 import Case.Case;
 
@@ -8,10 +8,13 @@ public class Joueur {
     private Case saCase;
     private int score;
     private Hotte hotte;
+    private int pointAction; //non cumulable
 
     //CONSTRUCTEUR
-    public Joueur()
+    public Joueur(Case case)
     {
+        pointAction=10;
+        hotte = new Hotte();
 
     }
 
@@ -35,5 +38,16 @@ public class Joueur {
     public void viderHotte()
     {
 
+
     }
+
+    //GETTER SETTER
+    public int getPointAction() {
+        return pointAction;
+    }
+
+    public void setPointAction(int pointAction) {
+        this.pointAction = pointAction;
+    }
+
 }
