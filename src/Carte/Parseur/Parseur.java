@@ -45,7 +45,9 @@ public class Parseur {
         for (int numLigne = 0; numLigne < nbColonnes; numLigne++){
             this.parseLigne(numLigne, chaine[2], nbColonnes);
         }
-        this.map.toString();
+
+        this.map.genererGrapheSimple();
+
     }
 
     public void lectureCuve(String cuves){
