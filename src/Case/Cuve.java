@@ -2,20 +2,19 @@ package Case;
 
 import Carte.Map;
 
-public class Vigne extends Case {
+public class Cuve extends Case {
 
-
-    public Vigne(int ligne, int colonne, Map map) {
+    public Cuve(int ligne, int colonne, Map map) {
         super(ligne, colonne, map);
     }
 
     @Override
     public Type_Case getType() {
-        return Type_Case.vigne;
+        return Type_Case.cuve;
     }
 
     public boolean franchissable()
     {
-        return false;
+        return true;
     }
 }
