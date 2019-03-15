@@ -18,6 +18,7 @@ public abstract class Objet {
     //Fixe la case de l'objet
     public void setCase(Case _saCase) {
         this.saCase = _saCase;
+        this.saCase.getMap().getListeObjet().add(this);
     }
 
     //Renvoie la case de l'objet
