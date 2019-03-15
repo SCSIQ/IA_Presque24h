@@ -20,5 +20,5 @@ public abstract class Raisin {
         return c;
     }
 
-    public abstract void getType();
+    public abstract Type_Raisin getType();
 }
