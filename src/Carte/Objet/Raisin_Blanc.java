@@ -4,6 +4,9 @@ import Case.Case;
 
 public class Raisin_Blanc extends Objet {
 
+
+
+
     private int qte;
 
     public Raisin_Blanc(Case c, int qte){
@@ -20,5 +23,12 @@ public class Raisin_Blanc extends Objet {
     @Override
     public Type_Objet getType() {
         return Type_Objet.Blanc;
+    }
+
+    public int getQte() {
+        return qte;
+    }
+    public void setQte(int qte) {
+        this.qte = qte;
     }
 }
