@@ -19,7 +19,7 @@ public class Parseur {
 
     //Parse une ligne du fichier
     public void parseLigne(int numLigne, String ligne, int tailleLigne) {
-        for(int numColonne = numLigne * tailleLigne; numColonne < (numLigne+1) * tailleLigne; numColonne++) {
+        for(int numColonne = 0 ; numColonne < tailleLigne ; numColonne++) {
             char c = ligne.charAt(numColonne);
             //creation de la case
             Case nouvelleCase = null;
@@ -27,6 +27,7 @@ public class Parseur {
              case 'C' : nouvelleCase = Fabrique_Cases.construireCase(Type_Case.chemin, numLigne, numColonne,this.map); break;
              default : nouvelleCase = Fabrique_Cases.construireCase(Type_Case.vigne, numLigne, numColonne,this.map); break;
              }
+            System.out.println(nouvelleCase);
              this.map.setCase(numLigne, numColonne, nouvelleCase);
         }
     }
@@ -36,7 +37,7 @@ public class Parseur {
 
 
         //ouverture du fichier en lecture
-        String d =ligne.replace("|", "_");
+        String d = this.removePipe(ligne);
         String[] chaine = d.split("_");
         int nbColonnes = Integer.parseInt(chaine[1]);
         for (int numLigne = 0; numLigne < nbColonnes; numLigne++){
@@ -45,11 +46,15 @@ public class Parseur {
 
     }
 
-    public void lectureCuve(){
+    public void lectureCuve(String cuves){
 
     }
 
     public void lectureRaisin(String raisins){
 
+    }
+
+    public String removePipe(String d){
+        return d.replace("|", "_");
     }
 }
