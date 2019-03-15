@@ -2,8 +2,7 @@ package Carte.Parseur;
 import Carte.Map;
 import Case.Case;
 import Case.Type_Case;
-import Objet.Cuve_Blanc;
-import Objet.Cuve_Rouge;
+import Objet.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -81,13 +80,32 @@ public class Parseur {
         Case c2 =  this.map.getCase(Integer.valueOf(cuveBlanche[0]), Integer.valueOf(cuveBlanche[1]));
         c2.setObjet(cb);
         cb.setCase(c2);
-
-        System.out.println(c.getObjet());
-        System.out.println(c2.getObjet());
     }
 
     public void lectureRaisin(String raisins){
+        for(Case c : this.map.getListeCase()){
+            if(c.getObjet()!= null){
+                if(!(c.getObjet().getType() == Type_Objet.Cuve_Blanc ||c.getObjet().getType() == Type_Objet.Cuve_Rouge) ){
+                    c.setObjet(null);
+                }
+            }
+        }
+        String raisin = this.removePipe(raisins);
+        String[] emplacement = raisin.split("_");
+        int nbRaisin = emplacement.length-1;
+        for(int i = 1; i <= nbRaisin; i++){
+            String[] leRaisin = emplacement[i].split(";");
+            Type_Objet typeRaisin;
+            Case c = this.map.getCase(Integer.valueOf(leRaisin[2]), Integer.valueOf(leRaisin[3]));
+            if(leRaisin[0].equals("ROUGE")){
+                c.setObjet(new Raisin_Rouge(c,Integer.valueOf(leRaisin[1])));
+            }
+            else {
+                c.setObjet(new Raisin_Blanc(c,Integer.valueOf(leRaisin[1])));
+            }
 
+
+        }
     }
 
     public String removePipe(String d){
