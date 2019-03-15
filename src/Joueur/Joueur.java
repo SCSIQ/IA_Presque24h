@@ -65,7 +65,7 @@ public class Joueur {
         return deplacement;
     }
 
-
+public void setCase(Case c){ this.saCase=c;}
     /**
      *
      * raisin et si type raisin != type raisin dans hotte -> ne ramasse pas
