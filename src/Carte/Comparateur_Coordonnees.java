@@ -1,6 +1,8 @@
 package Carte;
 
-public class Comparateur_Coordonnees {
+import java.util.Comparator;
+
+public class Comparateur_Coordonnees implements Comparator<Coordonnees> {
     @Override
     public int compare(Coordonnees o1, Coordonnees o2) {
         int val = 1;

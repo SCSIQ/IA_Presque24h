@@ -1,5 +1,8 @@
 package Carte.Graphes;
 
+
+import java.util.HashMap;
+
 public class Graphe {
     private HashMap<Case,Noeud> Noeuds;
     private HashMap<CoupleNoeud,Integer> Labels;

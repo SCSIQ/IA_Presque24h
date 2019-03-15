@@ -1,5 +1,7 @@
 package Carte.Graphes;
 
+import java.util.Objects;
+
 public class Couple_Noeud {
     private Noeud start;
     private Noeud end;

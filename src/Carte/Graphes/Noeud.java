@@ -1,5 +1,8 @@
 package Carte.Graphes;
 
+
+import java.util.ArrayList;
+
 public class Noeud {
     private Graphe graph;
     private ArrayList<Noeud> voisins;
