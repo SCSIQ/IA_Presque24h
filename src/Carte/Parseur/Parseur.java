@@ -108,7 +108,7 @@ public class Parseur {
         }
     }
 
-    public void addPlayer(String chaine, int numEquipe){
+    public Joueur addPlayer(String chaine, int numEquipe){
         for(Case c : this.map.getListeCase()){
             c.setJoueur(null);
         }
@@ -116,7 +116,9 @@ public class Parseur {
         String[] listeEquipe = bonneChaine.split("_");
         String[] coordEquipe = listeEquipe[numEquipe].split(";");
         Case c= this.map.getCase(Integer.parseInt(coordEquipe[0]), Integer.parseInt(coordEquipe[1]));
-        c.setJoueur(new Joueur(c));
+        Joueur rez = new Joueur(c);
+        c.setJoueur(rez);
+        return rez;
      }
 
     public String removePipe(String d){
