@@ -1,6 +1,7 @@
 package Carte;
 
 import Carte.Graphes.Graphe;
+import Carte.Objet.Objet;
 import Joueur.Joueur;
 import Carte.Parseur.Fabrique_Cases;
 import Case.Case;
@@ -14,7 +15,7 @@ public class Map {
 
     private final HashMap<Coordonnees,Case> hashMapCases;                       //Stockage par coordonnées des cases
     private final ArrayList<Case> listeCase;                                    //Liste des cases
-    private final ArrayList<Raisin> listeObjet;                                  //Liste des objets     //Position de la sortie
+    private final ArrayList<Objet> listeObjet;                                  //Liste des objets     //Position de la sortie
     private Joueur joueur;        //Cadence
     private Graphe graphe_simple;
 
@@ -30,6 +31,11 @@ public class Map {
     }
 
 //---------- GETEUR/SETEUR -----------------------------------------------------
+
+
+    public ArrayList<Objet> getListeObjet() {
+        return listeObjet;
+    }
 
     //Renvoie la case présente à ses coordonnées
     public Case getCase(int ligne, int colonne) {
