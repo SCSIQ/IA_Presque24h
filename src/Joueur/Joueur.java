@@ -72,7 +72,7 @@ public class Joueur {
      */
     public void ramasser()
     {
-        if(saCase.getObjet().getType()!= Type_Objet.Cuve)
+        if(saCase.getObjet().getType()!= Type_Objet.Cuve_Blanc || saCase.getObjet().getType()!= Type_Objet.Cuve_Rouge )
         {
             if (hotte.getNombreRaisin() == 0 && pointAction>0) {
                 hotte.setTypeRaisin(saCase.getObjet().getType());
