@@ -31,7 +31,7 @@ public class Hotte {
             res =true;
         }
 
-        return true;
+        return res;
     }
 
     //GETTER SETTER

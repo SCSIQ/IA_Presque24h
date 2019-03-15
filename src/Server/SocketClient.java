@@ -61,7 +61,7 @@ public class SocketClient {
             //Demander score
 
             IA_dijkstra ia = new IA_dijkstra(j);
-            for(int i=0; i<=9; i++) {
+            for(int i=0; i<10; i++) {
                 //Actions IA
                 Type_Action action = ia.action();
                 //System.out.println(action);
@@ -86,9 +86,10 @@ public class SocketClient {
             }
             command = "FINTOUR";
             pw.println(command);
+            System.out.println(command);
             str = bufr.readLine();
-            //System.out.println("fin tour");
-        }while("FIN".equals(str));
+            System.out.println(str);
+        }while(!"FIN".equals(str));
         s.close();
 
     }
