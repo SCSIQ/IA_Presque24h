@@ -3,7 +3,7 @@ import Carte.Map;
 import Case.Case;
 import Case.Type_Case;
 import Objet.*;
-
+import Joueur.Joueur;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -107,6 +107,17 @@ public class Parseur {
 
         }
     }
+
+    public void addPlayer(String chaine, int numEquipe){
+        for(Case c : this.map.getListeCase()){
+            c.setJoueur(null);
+        }
+        String bonneChaine = this.removePipe(chaine);
+        String[] listeEquipe = bonneChaine.split("_");
+        String[] coordEquipe = listeEquipe[numEquipe].split(";");
+        Case c= this.map.getCase(Integer.parseInt(coordEquipe[0]), Integer.parseInt(coordEquipe[1]));
+        c.setJoueur(new Joueur(c));
+     }
 
     public String removePipe(String d){
         return d.replace("|", "_");
