@@ -111,5 +111,13 @@ public class Map {
 
     }
 
+    public String toString() {
+        String toReturn = "";
+        for(Case c : this.listeCase) {
+            toReturn += c.toString()+"\n";
+        }
+        return toReturn;
+    }
+
 }
 
