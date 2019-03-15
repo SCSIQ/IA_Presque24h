@@ -1,5 +1,8 @@
 package Joueur;
 
+import Carte.Objet.Raisin_Blanc;
+import Carte.Objet.Raisin_Rouge;
+import Carte.Objet.Type_Objet;
 import Case.Case;
 import IA.Type_Action;
 
@@ -69,18 +72,38 @@ public class Joueur {
      */
     public void ramasser()
     {
-        if (hotte.getNombreRaisin() == 0 && pointAction>0) {
-            hotte.setTypeRaisin(saCase.getRaisin().getType());
-            hotte.setNombreRaisin(saCase.getRaisin().getQte());
-            saCase.setRaisin(null);
-            this.setPointAction(this.getPointAction()-1);
-        }
-        else if (hotte.getTypeRaisin() == saCase.getRaisin().getType() && pointAction>0)
+        if(saCase.getObjet().getType()!= Type_Objet.Cuve)
         {
-            hotte.setNombreRaisin(saCase.getRaisin().getQte());
-            saCase.setRaisin(null);
-            this.setPointAction(this.getPointAction()-1);
+            if (hotte.getNombreRaisin() == 0 && pointAction>0) {
+                hotte.setTypeRaisin(saCase.getObjet().getType());
+
+                if(saCase.getObjet().getType()== Type_Objet.Blanc)
+                {
+                    hotte.setNombreRaisin(((Raisin_Blanc)saCase.getObjet()).getQte());
+                }
+                else
+                {
+                    hotte.setNombreRaisin(((Raisin_Rouge)saCase.getObjet()).getQte());
+                }
+
+                saCase.setObjet(null);
+                this.setPointAction(this.getPointAction()-1);
+            }
+            else if (hotte.getTypeRaisin() == saCase.getObjet().getType() && pointAction>0)
+            {
+                if(saCase.getObjet().getType()== Type_Objet.Blanc)
+                {
+                    hotte.setNombreRaisin(((Raisin_Blanc)saCase.getObjet()).getQte());
+                }
+                else
+                {
+                    hotte.setNombreRaisin(((Raisin_Rouge)saCase.getObjet()).getQte());
+                }
+                saCase.setObjet(null);
+                this.setPointAction(this.getPointAction()-1);
+            }
         }
+
 
     }
 
