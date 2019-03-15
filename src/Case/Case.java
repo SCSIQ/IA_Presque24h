@@ -106,13 +106,31 @@ public abstract class Case {
         {
             rep=false;
         }*/
-        
+
         if(this.getType()==vigne)
         {
             rep=false;
         }
 
         return rep;
+    }
+
+    public Case[] getVoisines()
+    {
+        Case[] voisines = new Case[4];
+
+        voisines[0] = getHaut();
+        voisines[1] = getBas();
+        voisines[2] = getGauche();
+        voisines[3] = getDroite();
+
+        return voisines;
+
+    }
+
+    public String toString()
+    {
+        return getLigne()+"/"+getColonne();
     }
 
 }
