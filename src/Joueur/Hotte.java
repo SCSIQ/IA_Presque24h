@@ -1,13 +1,13 @@
 package Joueur;
 
-import Carte.Objet.Type_Raisin;
+import Carte.Objet.Type_Objet;
 
 public class Hotte {
 
     //ATTRIBUTS
     private int nombreRaisin;
     private int quantiteMax;
-    private Type_Raisin typeRaisin;
+    private Type_Objet typeRaisin;
 
     //CONSTRUCTEUR
     public Hotte()
@@ -43,11 +43,11 @@ public class Hotte {
         this.nombreRaisin = nombreRaisin;
     }
 
-    public Type_Raisin getTypeRaisin() {
+    public Type_Objet getTypeRaisin() {
         return typeRaisin;
     }
 
-    public void setTypeRaisin(Type_Raisin typeRaisin) {
+    public void setTypeRaisin(Type_Objet typeRaisin) {
         this.typeRaisin = typeRaisin;
     }
 

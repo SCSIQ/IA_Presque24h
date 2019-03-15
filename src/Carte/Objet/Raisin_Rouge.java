@@ -2,14 +2,23 @@ package Carte.Objet;
 
 import Case.Case;
 
-public class Raisin_Rouge extends Raisin {
+public class Raisin_Rouge extends Objet {
+
+    private int qte;
 
     public Raisin_Rouge(Case c, int qte){
-        super(c, qte);
+        super();
+        this.qte=qte;
+        this.getCase().setObjet(this);
     }
 
     @Override
-    public Type_Raisin getType() {
-        return Type_Raisin.Rouge;
+    public boolean ramassable() {
+        return true;
+    }
+
+    @Override
+    public Type_Objet getType() {
+        return Type_Objet.Rouge;
     }
 }
