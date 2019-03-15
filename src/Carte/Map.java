@@ -82,7 +82,7 @@ public class Map {
 
 
 
-    private void genererGrapheSimple(){
+    public void genererGrapheSimple(){
         //Génération des sommets
         for (Case c : this.listeCase){
             this.graphe_simple.addNoeud(c);
