@@ -1,10 +1,9 @@
 package Carte.Parseur;
 import Carte.Map;
+import Carte.Objet.Cuve_Blanc;
+import Carte.Objet.Cuve_Rouge;
 import Case.Case;
 import Case.Type_Case;
-import Objet.Cuve_Blanc;
-import Objet.Cuve_Rouge;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
