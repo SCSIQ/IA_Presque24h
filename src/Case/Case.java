@@ -1,6 +1,8 @@
 package Case;
 
+import Carte.Joueur.Joueur;
 import Carte.Map;
+import Carte.Objet.Raisin;
 
 import static Case.Type_Case.vigne;
 
@@ -11,8 +13,8 @@ public abstract class Case {
     //ATTRIBUTS
     private int ligne;
     private int colonne;
-    //private Joueur joueur=null;
-    //private Raisin raison;
+    private Joueur joueur=null;
+    private Raisin raisin;
     private Map map;
 
     //CONSTRUCTEUR
@@ -20,8 +22,8 @@ public abstract class Case {
     {
         this.ligne=ligne;
         this.colonne=colonne;
-        //this.joueur=null;
-        //this.raisin=null;
+        this.joueur=null;
+        this.raisin=null;
         this.map=map;
     }
 
@@ -72,7 +74,7 @@ public abstract class Case {
         this.map = map;
     }
 
-    /*
+
     public Joueur getJoueur() {
         return joueur;
     }
@@ -88,7 +90,7 @@ public abstract class Case {
     public void setMap(Raisin raisin) {
         this.raisin = raisin;
     }
-    * */
+
 
     //METHODES
 
@@ -102,10 +104,10 @@ public abstract class Case {
     {
         boolean rep=true;
 
-       /* if(this.joueur !=null)
+        if(this.joueur !=null)
         {
             rep=false;
-        }*/
+        }
 
         if(this.getType()==vigne)
         {
