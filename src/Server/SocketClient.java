@@ -34,7 +34,7 @@ public class SocketClient {
         pw.println(command);
         str = bufr.readLine();
         int eq = Integer.parseInt(""+str.charAt(3));
-        System.out.println(str);
+        //System.out.println(str);
         boolean tour1 = true;
         do{
             String raisin = bufr.readLine();
@@ -49,7 +49,7 @@ public class SocketClient {
                 str = bufr.readLine();
                 c.Cuves(str);
                 tour1 = false;
-                System.out.println("fin init");
+                //System.out.println("fin init");
             }
             //Créer les raisins
             c.Raisin(raisin);
@@ -64,11 +64,10 @@ public class SocketClient {
             for(int i=0; i<=9; i++) {
                 //Actions IA
                 Type_Action action = ia.action();
-                System.out.println(action);
+                //System.out.println(action);
                 switch(action){
                     case deplacement_bas: command = "DEPLACE|BAS";
                     break;
-
                     case deplacement_droite: command = "DEPLACE|DROITE";
                         break;
                     case deplacement_gauche: command = "DEPLACE|GAUCHE";
@@ -77,17 +76,18 @@ public class SocketClient {
                         break;
                     case ramasser: command = "RAMASSE";
                         break;
-                    case vider: command = "VIDER";
+                    case vider: command = "VIDE";
                         break;
                 }
-                System.out.println(command);
+                //System.out.println(command);
                 pw.println(command);
                 str = bufr.readLine();
+                System.out.println(str);
             }
             command = "FINTOUR";
             pw.println(command);
             str = bufr.readLine();
-            System.out.println("fin tour");
+            //System.out.println("fin tour");
         }while("FIN".equals(str));
         s.close();
 

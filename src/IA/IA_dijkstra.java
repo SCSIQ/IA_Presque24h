@@ -40,19 +40,24 @@ public class IA_dijkstra extends IA{
             if(this.getCase().getObjet()!=null){
                 //Si l'objet de la case est du raisin
                 if(this.getCase().getObjet().getType()==Type_Objet.Rouge || this.getCase().getObjet().getType()==Type_Objet.Blanc){
+                    System.out.println("coucou");
                     action=Type_Action.ramasser;
                     this.getEntite().ramasser();
                 }
                 //Si on est sur une cuve et que le type de la cuve est le meme que les raisin de la hotte
-                if(this.getCase().getObjet().getType()==Type_Objet.Cuve_Blanc && this.getEntite().getHotte().getTypeRaisin()==Type_Objet.Cuve_Blanc || this.getCase().getObjet().getType()==Type_Objet.Cuve_Rouge && this.getEntite().getHotte().getTypeRaisin()==Type_Objet.Cuve_Rouge){
+                /*if((this.getCase().getObjet().getType()==Type_Objet.Cuve_Blanc && this.getEntite().getHotte().getTypeRaisin()==Type_Objet.Cuve_Blanc) || (this.getCase().getObjet().getType()==Type_Objet.Cuve_Rouge && this.getEntite().getHotte().getTypeRaisin()==Type_Objet.Cuve_Rouge)){
                     action=Type_Action.vider;
                     this.getEntite().viderHotte();
-                }
+                }*/
             }
             this.calcDest();
         }
         else{
             action = calculAction(astar.getPath().get(0).getCase());
+            //System.out.println(astar.getPath().get(0).getCase().toString());
+            astar.destroyFirst();
+            //System.out.println(action);
+
         }
         return action;
     }
@@ -67,6 +72,7 @@ public class IA_dijkstra extends IA{
                 if (o.getType() == Type_Objet.Blanc || o.getType() == Type_Objet.Rouge) {
                     int distObjet = (int) Math.sqrt(Math.pow((double) o.getCase().getLigne() - (double) this.getCase().getLigne(), 2) + Math.pow((double) o.getCase().getColonne() - (double) this.getCase().getColonne(), 2));
                     if (dist > distObjet) {
+                        dist=distObjet;
                         dest = o.getCase();
                     }
                 }
@@ -77,6 +83,7 @@ public class IA_dijkstra extends IA{
                 if (o.getType() == this.couleur) {
                     int distObjet = (int) Math.sqrt(Math.pow((double) o.getCase().getLigne() - (double) this.getCase().getLigne(), 2) + Math.pow((double) o.getCase().getColonne() - (double) this.getCase().getColonne(), 2));
                     if (dist > distObjet) {
+                        dist=distObjet;
                         dest = o.getCase();
                     }
                 }
@@ -84,6 +91,8 @@ public class IA_dijkstra extends IA{
         }
         this.couleur=dest.getObjet().getType();
         astar.calcul(this.graphe.getNoeud(this.getCase()),this.graphe.getNoeud(dest));
+        //System.out.println("dest"+dest.toString());
+        //System.out.println("case joueur"+this.getCase().toString());
     }
 
     public Type_Action calculAction(Case CaseSuivante){
@@ -92,7 +101,7 @@ public class IA_dijkstra extends IA{
         if(CaseSuivante.getType()==Type_Case.chemin){
             //Si la case est vide
             if(CaseSuivante.getJoueur()==null) {
-                res = this.directionDeplacement(this.getCase().getColonne(), this.getCase().getLigne(), CaseSuivante);
+                res = this.directionDeplacement(this.getCase().getLigne(), this.getCase().getColonne(), CaseSuivante);
             }
         }
         return res;

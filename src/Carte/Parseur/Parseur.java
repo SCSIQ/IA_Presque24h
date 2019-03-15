@@ -61,7 +61,7 @@ public class Parseur {
         for (int numLigne = 0; numLigne < nbColonnes; numLigne++){
             this.parseLigne(numLigne, dd[numLigne], nbColonnes);
         }
-        System.out.println(map);
+        //System.out.println(map);
         this.map.genererGrapheSimple();
 
     }

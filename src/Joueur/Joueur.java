@@ -72,7 +72,7 @@ public class Joueur {
      */
     public void ramasser()
     {
-        if(hotte.estPleine()==false&& pointAction>0) //vérifie si la hotte est pleine ou si assez de points d'actions
+        if(hotte.estPleine()==false) //vérifie si la hotte est pleine ou si assez de points d'actions
         {
             if(saCase.getObjet().ramassable()==true) //vérifie si c'est des raisins
             {
@@ -124,8 +124,7 @@ public class Joueur {
     public void viderHotte()
     {
 
-        if(this.getPointAction()>0)
-        {
+
             if(saCase.getObjet().getType()==Type_Objet.Cuve_Blanc && hotte.getTypeRaisin()==Type_Objet.Blanc)
             {
                 score+=((Raisin_Blanc)saCase.getObjet()).getValeurRaisin()*((Raisin_Blanc)saCase.getObjet()).getQte();
@@ -150,11 +149,8 @@ public class Joueur {
             }
 
             this.setPointAction(this.getPointAction()-1);
-        }
-        else
-        {
-            System.out.println("Pour vider la hotte : Vous n'avez pas assez de points d'actions");
-        }
+
+
 
     }
 
